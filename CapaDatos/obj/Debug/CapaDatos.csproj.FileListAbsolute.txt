@@ -1,0 +1,5 @@
+D:\c#2023\proyecto_activos\proyectoActCod\CapaDatos\bin\Debug\CapaDatos.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaDatos\bin\Debug\CapaDatos.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaDatos\obj\Debug\CapaDatos.csprojResolveAssemblyReference.cache
+D:\c#2023\proyecto_activos\proyectoActCod\CapaDatos\obj\Debug\CapaDatos.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaDatos\obj\Debug\CapaDatos.pdb

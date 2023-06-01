@@ -1,0 +1,15 @@
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\bin\Debug\CapaPresentacion.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\bin\Debug\CapaPresentacion.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\bin\Debug\CapaNegocio.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\bin\Debug\CapaDatos.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\bin\Debug\CapaNegocio.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\bin\Debug\CapaDatos.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.csprojResolveAssemblyReference.cache
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmInventario.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.Cache
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmEmpleados.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmOficina.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmPartida.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources

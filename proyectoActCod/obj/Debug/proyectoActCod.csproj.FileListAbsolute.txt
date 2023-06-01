@@ -1,0 +1,14 @@
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\proyectoActCod.exe.config
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\proyectoActCod.exe
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\proyectoActCod.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\CapaPresentacion.dll
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\CapaNegocio.dll
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\CapaDatos.dll
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\CapaPresentacion.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\CapaNegocio.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\bin\Debug\CapaDatos.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.csprojResolveAssemblyReference.cache
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.Properties.Resources.resources
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.csproj.GenerateResource.Cache
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.exe
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.pdb

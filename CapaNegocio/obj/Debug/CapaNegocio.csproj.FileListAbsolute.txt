@@ -1,0 +1,7 @@
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\bin\Debug\CapaNegocio.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\bin\Debug\CapaNegocio.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\bin\Debug\CapaDatos.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\bin\Debug\CapaDatos.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\obj\Debug\CapaNegocio.csprojResolveAssemblyReference.cache
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\obj\Debug\CapaNegocio.dll
+D:\c#2023\proyecto_activos\proyectoActCod\CapaNegocio\obj\Debug\CapaNegocio.pdb
