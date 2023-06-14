@@ -12,3 +12,4 @@ D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCo
 D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.csproj.GenerateResource.Cache
 D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.exe
 D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.pdb
+D:\c#2023\proyecto_activos\proyectoActCod\proyectoActCod\obj\Debug\proyectoActCod.form1.resources

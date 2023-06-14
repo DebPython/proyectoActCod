@@ -14,5 +14,12 @@ namespace CapaNegocio
         {
             return new DOficina().Mostrar();
         }
+
+        public static DataTable BuscarOficina(string textobuscar, string condicion)
+        {
+            DOficina Obj = new DOficina();
+            return Obj.Buscar_Oficina(textobuscar, condicion);
+
+        }
     }
 }

@@ -14,5 +14,12 @@ namespace CapaNegocio
         {
             return new DPartida().Mostrar();
         }
+
+        public static DataTable BuscarPartida(string textobuscar, string condicion)
+        {
+            DPartida Obj = new DPartida();
+            return Obj.Buscar_Partida(textobuscar, condicion);
+
+        }
     }
 }

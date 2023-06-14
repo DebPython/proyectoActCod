@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using System.Windows;
+
 namespace CapaPresentacion
 {
     public partial class frmInventario : Form
@@ -15,13 +17,23 @@ namespace CapaPresentacion
         public frmInventario()
         {
             InitializeComponent();
-            btnGuardar.Text = "Nuevo";
 
             buttons_text(false, false);
             Mostrar();
+
+            this.ttMensaje.SetToolTip(this.txtEmp_no, "Ingrese el Nombre del Empleado");
+            this.ttMensaje.SetToolTip(this.txtOficina_no, "Ingrese una oficina de empleado");
+            this.ttMensaje.SetToolTip(this.txtPartida_no, "Ingrese el Numero de Partida");
+            this.ttMensaje.SetToolTip(this.txtSerie, "Ingrese Serie de Inventario");
+
+            this.ttMensaje.SetToolTip(this.txtDescripcion, "Ingrese Descripcion de Inventario");
+            this.ttMensaje.SetToolTip(this.txtCod_entidad, "Ingrese Codigo de entidad");
         }
 
-        private static frmInventario _Instancia;
+        private bool IsNuevo = false;
+        private bool IsEditar = false;
+
+        private static frmInventario _Instancia = null;
 
         public static frmInventario GetInstancia()
         {
@@ -31,6 +43,18 @@ namespace CapaPresentacion
 
             }
             return _Instancia;
+
+        }
+
+        private void MensajeOk(string mensaje)
+        {
+            MessageBox.Show(mensaje, " Sistema de Inventario ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, " Sistema de Inventario ", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
@@ -44,12 +68,21 @@ namespace CapaPresentacion
         {
             this.txtEmp_no.Text = emp_no;
             this.txtEmpleado.Text = nombre;
+            this.txtAsignacion.Text = "ASIG-" + emp_no;
+
         }
 
         public void setPartida(string partida_no, string partida)
         {
             this.txtPartida_no.Text = partida_no;
             this.txtPartida.Text = partida;
+        }
+
+        public void ocultar_columnas()
+        {
+           // this.dataInventario.Columns[14].Visible = false;
+            //this.dataInventario.Columns[15].Visible = false;
+           // this.dataInventario.Columns[16].Visible = false;
         }
 
 
@@ -74,7 +107,7 @@ namespace CapaPresentacion
             txtPartida.Text = "";
             txtPartida_no.Text = "";
 
-            btnGuardar.Text = "Nuevo";
+            
         }
 
         public void buttons_text(bool a, bool b)
@@ -89,7 +122,9 @@ namespace CapaPresentacion
             txtEspecifica.Enabled = a;
             txtProcedencia.Enabled = a;
             txtObservaciones.Enabled = a;
+            btnGuardar.Enabled = a;
             
+
             btnPartida.Enabled = a;
             btnEmpleado.Enabled = a;
             btnOficina.Enabled = a;
@@ -97,6 +132,7 @@ namespace CapaPresentacion
 
             btnEliminar.Enabled = b;
             btnModificar.Enabled = b;
+            
 
         }
         private void Mostrar()
@@ -105,6 +141,29 @@ namespace CapaPresentacion
            
             lbltotal.Text = "Total de Registros : " + Convert.ToString(dataInventario.Rows.Count - 1);
         }
+
+        private void buscar_changed()
+        {
+    
+            string condicion = "";
+
+            if(cboBuscar.Text.Equals("Auxiliar")){
+                condicion = "auxiliar";    
+            }
+            if(cboBuscar.Text.Equals("Código Entidad")){
+                condicion = "cod_entidad";
+            }
+            if(cboBuscar.Text.Equals("Empleado")){
+                condicion = "em.ci";
+            
+            }
+            
+            this.dataInventario.DataSource = NInventario.BuscarNombre(this.txtBuscar.Text, condicion);
+
+            lbltotal.Text = "Total de Registros : " + Convert.ToString(dataInventario.Rows.Count - 1);
+        
+
+        }
         private void frmInventario_Load(object sender, EventArgs e)
         {
 
@@ -112,15 +171,88 @@ namespace CapaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            buttons_text(true, false);
-            btnGuardar.Text = "Guardar";
+            try
+            {
+
+                string rpta = "";
+
+                if (this.txtEmp_no.Text == string.Empty || this.txtOficina_no.Text == string.Empty || 
+                    this.txtPartida_no.Text == string.Empty || this.txtSerie.Text == string.Empty || 
+                    this.txtDescripcion.Text == string.Empty || this.txtCod_entidad.Text == string.Empty)
+                {
+                    MensajeError("Falta Ingresar algunos datos, seran remarcados");
+
+                    errorIcono.SetError(txtEmp_no, "Ingrese el Nombre del Empleado");
+                    errorIcono.SetError(txtOficina_no, "Ingrese una oficina de empleado");
+                    errorIcono.SetError(txtPartida_no, "Ingrese el Numero de Partida");
+                    errorIcono.SetError(txtSerie, "Ingrese Serie de Inventario");
+
+                    errorIcono.SetError(txtDescripcion, "Ingrese Descripcion de Inventario");
+                    errorIcono.SetError(txtCod_entidad, "Ingrese Codigo de entidad");
+
+
+                }
+                else
+                {
+                    if (this.IsNuevo)
+                    {
+                       
+                        rpta = NInventario.Insertar(this.txtAuxiliar.Text.Trim(), this.txtCod_entidad.Text.Trim(), 
+                            this.txtCod_antiguo.Text.Trim(), this.txtSerie.Text.Trim(), this.txtDescripcion.Text, this.txtEstado.Text, 
+                            this.txtGeografica.Text, this.txtEspecifica.Text, this.txtProcedencia.Text, this.txtObservaciones.Text,
+                            this.txtOficina_no.Text, this.txtEmp_no.Text, this.txtPartida_no.Text, this.txtAsignacion.Text);
+
+                    }
+                    else
+                    {
+                        rpta = NInventario.Editar(this.txtInv_no.Text, this.txtAuxiliar.Text.Trim(), this.txtCod_entidad.Text.Trim(),
+                            this.txtCod_antiguo.Text.Trim(), this.txtSerie.Text.Trim(), this.txtDescripcion.Text, this.txtEstado.Text,
+                            this.txtGeografica.Text, this.txtEspecifica.Text, this.txtProcedencia.Text, this.txtObservaciones.Text,
+                            this.txtOficina_no.Text, this.txtEmp_no.Text, this.txtPartida_no.Text, this.txtAsignacion.Text);
+                    }
+
+                    if (rpta.Equals("OK"))
+                    {
+                        if (this.IsNuevo)
+                        {
+                            this.MensajeOk("Se Inserto de Forma correcta el Registro");
+                        }
+                        else
+                        {
+                            this.MensajeOk("Se Actualizo correctamente el Registro");
+                        }
+                    }
+                    else
+                    {
+                        this.MensajeError(rpta);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+
+            }
+
+
+            this.IsNuevo = false;
+            this.IsEditar = false;
+            this.buttons_text(false, false);
+            this.limpiar();
+            this.Mostrar();
+            btnNuevo.Enabled = true;
+            txtAsignacion.Text = "ASIG-";
+
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            txtAsignacion.Text = "ASIG-";
             buttons_text(false, false);
             limpiar();
-            btnGuardar.Enabled = true;
+            btnNuevo.Enabled = true;
         }
 
         private void dataInventario_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -130,9 +262,18 @@ namespace CapaPresentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            btnGuardar.Enabled = true;
-            btnGuardar.Text = "Guardar";
-            buttons_text(true, false);
+            if (!this.txtInv_no.Text.Equals(""))
+            {
+                this.IsEditar = true;
+                btnGuardar.Enabled = true;
+                btnNuevo.Enabled = false;
+                buttons_text(true, false);
+            }
+            else
+            {
+                this.MensajeError("Debe de seleccionar primero el registro a Modificar");
+            }
+           
         }
 
         private void dataInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -160,11 +301,37 @@ namespace CapaPresentacion
             this.txtEspecifica.Text = Convert.ToString(this.dataInventario.CurrentRow.Cells["especifica"].Value);
             this.txtProcedencia.Text = Convert.ToString(this.dataInventario.CurrentRow.Cells["procedencia"].Value);
             this.txtObservaciones.Text = Convert.ToString(this.dataInventario.CurrentRow.Cells["observaciones"].Value);
-
+            this.txtAsignacion.Text = Convert.ToString(this.dataInventario.CurrentRow.Cells["asignacion"].Value);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            string rpta = "";
+            if (this.txtInv_no.Text != string.Empty)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de Eliminar el registro "+txtInv_no.Text+"?", 
+                    "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    rpta = NInventario.Eliminar(txtInv_no.Text);
+                    if (rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se Elimino el registro correctamente..!");
+                        this.IsNuevo = false;
+                        this.IsEditar = false;
+                        this.buttons_text(false, false);
+                        this.limpiar();
+                        this.Mostrar();
+                        btnNuevo.Enabled = true;
+                        txtAsignacion.Text = "ASIG-";
+                    }
+                }
+            }
+            else
+            {
+                MensajeError("Seleccione un Registro para Eliminar");
+            }
+
 
         }
 
@@ -185,6 +352,32 @@ namespace CapaPresentacion
         {
             frmPartida form = new frmPartida();
             form.ShowDialog();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            
+            this.buscar_changed();
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.buscar_changed();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            this.IsEditar = false;
+            this.IsNuevo = true;
+            buttons_text(true, false);
+            txtAsignacion.Text = "ASIG-";
+            btnNuevo.Enabled = false;
+        }
+
+        private void frmInventario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _Instancia = null;
         }
     }
 }

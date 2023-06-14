@@ -13,3 +13,6 @@ D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresent
 D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmOficina.resources
 D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmPartida.resources
 D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmUsuarios.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.mdiPresentacion.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmLogin.resources
+D:\c#2023\proyecto_activos\proyectoActCod\CapaPresentacion\obj\Debug\CapaPresentacion.frmHistorial.resources

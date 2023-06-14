@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataInventario = new System.Windows.Forms.DataGridView();
             this.lbltotal = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -70,10 +71,14 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.dtFecha_Ingreso = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtAsignacion = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataInventario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.SuspendLayout();
             // 
             // dataInventario
@@ -83,7 +88,7 @@
             this.dataInventario.Name = "dataInventario";
             this.dataInventario.ReadOnly = true;
             this.dataInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataInventario.Size = new System.Drawing.Size(602, 391);
+            this.dataInventario.Size = new System.Drawing.Size(662, 443);
             this.dataInventario.TabIndex = 0;
             this.dataInventario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataInventario_CellClick);
             this.dataInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataInventario_CellContentClick);
@@ -92,7 +97,7 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(635, 461);
+            this.lbltotal.Location = new System.Drawing.Point(635, 506);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(35, 13);
             this.lbltotal.TabIndex = 1;
@@ -100,27 +105,34 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(794, 23);
+            this.txtBuscar.Location = new System.Drawing.Point(817, 26);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(135, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(142, 20);
             this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(961, 21);
+            this.btnBuscar.Location = new System.Drawing.Point(975, 25);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // cboBuscar
             // 
             this.cboBuscar.FormattingEnabled = true;
-            this.cboBuscar.Location = new System.Drawing.Point(638, 23);
+            this.cboBuscar.Items.AddRange(new object[] {
+            "Auxiliar",
+            "Código Entidad",
+            "Empleado"});
+            this.cboBuscar.Location = new System.Drawing.Point(638, 25);
             this.cboBuscar.Name = "cboBuscar";
-            this.cboBuscar.Size = new System.Drawing.Size(141, 21);
+            this.cboBuscar.Size = new System.Drawing.Size(156, 21);
             this.cboBuscar.TabIndex = 4;
+            this.cboBuscar.Text = "Seleccione";
             // 
             // label1
             // 
@@ -409,7 +421,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(306, 345);
+            this.label15.Location = new System.Drawing.Point(28, 342);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 13);
             this.label15.TabIndex = 40;
@@ -418,7 +430,7 @@
             // txtObservaciones
             // 
             this.txtObservaciones.BackColor = System.Drawing.Color.BurlyWood;
-            this.txtObservaciones.Location = new System.Drawing.Point(390, 342);
+            this.txtObservaciones.Location = new System.Drawing.Point(112, 339);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -427,7 +439,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(129, 419);
+            this.btnGuardar.Location = new System.Drawing.Point(151, 419);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 42;
@@ -447,7 +459,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(372, 419);
+            this.btnEliminar.Location = new System.Drawing.Point(344, 419);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 44;
@@ -455,29 +467,9 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // dtFecha_Ingreso
-            // 
-            this.dtFecha_Ingreso.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dtFecha_Ingreso.Enabled = false;
-            this.dtFecha_Ingreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha_Ingreso.Location = new System.Drawing.Point(112, 345);
-            this.dtFecha_Ingreso.Name = "dtFecha_Ingreso";
-            this.dtFecha_Ingreso.Size = new System.Drawing.Size(172, 20);
-            this.dtFecha_Ingreso.TabIndex = 45;
-            this.dtFecha_Ingreso.Value = new System.DateTime(2023, 6, 1, 0, 0, 0, 0);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(31, 351);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 13);
-            this.label14.TabIndex = 46;
-            this.label14.Text = "Fecha Ingreso";
-            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(470, 419);
+            this.btnCancel.Location = new System.Drawing.Point(442, 419);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 47;
@@ -485,14 +477,52 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(322, 353);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 13);
+            this.label14.TabIndex = 48;
+            this.label14.Text = "Asignación";
+            // 
+            // txtAsignacion
+            // 
+            this.txtAsignacion.BackColor = System.Drawing.Color.BurlyWood;
+            this.txtAsignacion.Enabled = false;
+            this.txtAsignacion.Location = new System.Drawing.Point(390, 353);
+            this.txtAsignacion.Name = "txtAsignacion";
+            this.txtAsignacion.Size = new System.Drawing.Size(179, 20);
+            this.txtAsignacion.TabIndex = 49;
+            this.txtAsignacion.Text = "ASIG-";
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(50, 419);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 50;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // errorIcono
+            // 
+            this.errorIcono.ContainerControl = this;
+            // 
+            // ttMensaje
+            // 
+            this.ttMensaje.IsBalloon = true;
+            // 
             // frmInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1252, 483);
-            this.Controls.Add(this.btnCancel);
+            this.ClientSize = new System.Drawing.Size(1312, 528);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.txtAsignacion);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.dtFecha_Ingreso);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnGuardar);
@@ -537,8 +567,10 @@
             this.Controls.Add(this.dataInventario);
             this.Name = "frmInventario";
             this.Text = "frmInventario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInventario_FormClosing);
             this.Load += new System.EventHandler(this.frmInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataInventario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,8 +614,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.DateTimePicker dtFecha_Ingreso;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnCancel;
         protected internal System.Windows.Forms.TextBox txtEmpleado;
         protected internal System.Windows.Forms.TextBox txtEmp_no;
@@ -591,5 +621,10 @@
         protected internal System.Windows.Forms.TextBox txtPartida_no;
         public System.Windows.Forms.TextBox txtOficina;
         public System.Windows.Forms.TextBox txtOficina_no;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtAsignacion;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.ErrorProvider errorIcono;
+        private System.Windows.Forms.ToolTip ttMensaje;
     }
 }

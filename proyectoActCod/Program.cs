@@ -17,7 +17,9 @@ namespace proyectoActCod
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(frmInventario.GetInstancia());
+            Application.Run(new frmLogin());
+
+
         }
     }
 }

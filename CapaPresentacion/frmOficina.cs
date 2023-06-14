@@ -23,6 +23,32 @@ namespace CapaPresentacion
         {
 
         }
+
+        private void buscar_changed()
+        {
+
+            string condicion = "";
+
+            if (cboBuscar.Text.Equals("Nombre"))
+            {
+                condicion = "nombre_of";
+            }
+            if (cboBuscar.Text.Equals("Departamento"))
+            {
+                condicion = "depto";
+            }
+            if (cboBuscar.Text.Equals("Ubicación"))
+            {
+                condicion = "ubicacion";
+
+            }
+
+            this.dataOficina.DataSource = NOficina.BuscarOficina(this.txtBuscar.Text, condicion);
+
+            lblregistros.Text = "Total de Registros : " + Convert.ToString(dataOficina.Rows.Count - 1);
+
+
+        }
         private void Mostrar()
         {
             this.dataOficina.DataSource = NOficina.Mostrar();
@@ -50,6 +76,16 @@ namespace CapaPresentacion
         private void dataOficina_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            buscar_changed();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar_changed();
         }
     }
 }

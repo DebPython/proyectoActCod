@@ -38,5 +38,30 @@ namespace CapaDatos
             return DtResultado;
 
         }
+
+        public DataTable Buscar_Partida(string variable, string condicion)
+        {
+            DataTable DtResultado = new DataTable("Partida");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "SELECT * FROM partida WHERE " + condicion + " LIKE '" + variable + "%' ";
+                SqlCmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+            return DtResultado;
+        }
     }
 }

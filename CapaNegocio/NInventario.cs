@@ -14,7 +14,7 @@ namespace CapaNegocio
 
         public static string Insertar(string auxiliar, string cod_entidad, string cod_antiguo,
             string serie, string descripcion, string estado, string geografica, string especifica, string procedencia,
-            DateTime fecha_ingreso, string observaciones, string oficina_no, string emp_no, string partida_no)
+             string observaciones, string oficina_no, string emp_no, string partida_no, string asignacion)
         {
             DInventario Obj = new DInventario();
 
@@ -27,12 +27,13 @@ namespace CapaNegocio
             Obj.Geografica = geografica;
             Obj.Especifica = especifica;
             Obj.Procedencia = procedencia;
-            Obj.Fecha_ingreso = fecha_ingreso;
+            
             Obj.Observaciones = observaciones;
             Obj.Oficina_no = oficina_no;
             Obj.Emp_no = emp_no;
             Obj.Partida_no = partida_no;
-            
+            Obj.Asignacion = asignacion;
+
             return Obj.Insertar(Obj);
         
         }
@@ -40,7 +41,7 @@ namespace CapaNegocio
         //Metdo editaar la clase dinventario
         public static string Editar(string inv_no, string auxiliar, string cod_entidad, string cod_antiguo,
             string serie, string descripcion, string estado, string geografica, string especifica, string procedencia,
-            DateTime fecha_ingreso, string observaciones, string oficina_no, string emp_no, string partida_no)
+             string observaciones, string oficina_no, string emp_no, string partida_no, string asignacion)
         {
 
             DInventario Obj = new DInventario();
@@ -54,13 +55,14 @@ namespace CapaNegocio
             Obj.Geografica = geografica;
             Obj.Especifica = especifica;
             Obj.Procedencia = procedencia;
-            Obj.Fecha_ingreso = fecha_ingreso;
+            
             Obj.Observaciones = observaciones;
             Obj.Oficina_no = oficina_no;
             Obj.Emp_no = emp_no;
             Obj.Partida_no = partida_no;
+            Obj.Asignacion = asignacion;
 
-            return Obj.Insertar(Obj);
+            return Obj.Editar(Obj);
         }
         public static string Eliminar(string inv_no)
         {
@@ -75,6 +77,13 @@ namespace CapaNegocio
         public static DataTable Mostrar()
         {
             return new DInventario().Mostrar();
+        }
+
+        public static DataTable BuscarNombre(string textobuscar, string condicion)
+        {
+            DInventario Obj = new DInventario();
+            return Obj.BuscarNombre(textobuscar, condicion);
+
         }
     }
 }

@@ -15,5 +15,12 @@ namespace CapaNegocio
         {
             return new DEmpleados().Mostrar();
         }
+
+        public static DataTable BuscarEmpleados(string textobuscar, string condicion)
+        {
+            DEmpleados Obj = new DEmpleados();
+            return Obj.Buscar_Empleados(textobuscar, condicion);
+
+        }
     }
 }

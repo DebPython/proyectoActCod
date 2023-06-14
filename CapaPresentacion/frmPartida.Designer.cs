@@ -38,32 +38,38 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(414, 34);
+            this.btnBuscar.Location = new System.Drawing.Point(400, 35);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 9;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(235, 34);
+            this.txtBuscar.Location = new System.Drawing.Point(227, 37);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(152, 20);
             this.txtBuscar.TabIndex = 8;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // cboBuscar
             // 
             this.cboBuscar.FormattingEnabled = true;
-            this.cboBuscar.Location = new System.Drawing.Point(46, 34);
+            this.cboBuscar.Items.AddRange(new object[] {
+            "Nombre",
+            "Partida"});
+            this.cboBuscar.Location = new System.Drawing.Point(27, 35);
             this.cboBuscar.Name = "cboBuscar";
-            this.cboBuscar.Size = new System.Drawing.Size(158, 21);
+            this.cboBuscar.Size = new System.Drawing.Size(184, 21);
             this.cboBuscar.TabIndex = 7;
+            this.cboBuscar.Text = "Seleccione";
             // 
             // lblregistros
             // 
             this.lblregistros.AutoSize = true;
-            this.lblregistros.Location = new System.Drawing.Point(43, 398);
+            this.lblregistros.Location = new System.Drawing.Point(24, 411);
             this.lblregistros.Name = "lblregistros";
             this.lblregistros.Size = new System.Drawing.Size(35, 13);
             this.lblregistros.TabIndex = 6;
@@ -72,11 +78,11 @@
             // dataPartida
             // 
             this.dataPartida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataPartida.Location = new System.Drawing.Point(46, 77);
+            this.dataPartida.Location = new System.Drawing.Point(27, 77);
             this.dataPartida.Name = "dataPartida";
             this.dataPartida.ReadOnly = true;
             this.dataPartida.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataPartida.Size = new System.Drawing.Size(661, 306);
+            this.dataPartida.Size = new System.Drawing.Size(661, 319);
             this.dataPartida.TabIndex = 5;
             this.dataPartida.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataPartida_CellDoubleClick);
             // 
@@ -84,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 422);
+            this.ClientSize = new System.Drawing.Size(713, 433);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.cboBuscar);

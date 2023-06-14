@@ -30,6 +30,28 @@ namespace CapaPresentacion
             lblregistros.Text = "Total de Registros : " + Convert.ToString(dataEmpleados.Rows.Count - 1);
         }
 
+        private void buscar_changed()
+        {
+            string condicion = "";
+
+            if (cboBuscar.Text.Equals("CI"))
+            {
+                condicion = "ci";
+            }
+            if (cboBuscar.Text.Equals("Nombre"))
+            {
+                condicion = "nombre";
+            }
+            if (cboBuscar.Text.Equals("Cargo"))
+            {
+                condicion = "cargo";
+
+            }
+
+            this.dataEmpleados.DataSource = NEmpleados.BuscarEmpleados(this.txtBuscar.Text, condicion);
+            lblregistros.Text = "Total de Registros : " + Convert.ToString(dataEmpleados.Rows.Count - 1);
+        }
+
         private void dataEmpleados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmInventario form = frmInventario.GetInstancia();
@@ -39,6 +61,16 @@ namespace CapaPresentacion
 
             form.setEmpleado(par1, par2);
             this.Hide();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            buscar_changed();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar_changed();
         }
     }
 }

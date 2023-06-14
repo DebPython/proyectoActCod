@@ -1,6 +1,6 @@
 ﻿namespace proyectoActCod
 {
-    partial class Form1
+    partial class form1
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmLogin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(489, 248);
+            this.Name = "frmLogin";
+            this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

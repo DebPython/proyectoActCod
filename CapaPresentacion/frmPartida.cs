@@ -23,6 +23,26 @@ namespace CapaPresentacion
         {
 
         }
+        private void buscar_changed()
+        {
+
+            string condicion = "";
+
+            if (cboBuscar.Text.Equals("Nombre"))
+            {
+                condicion = "nombre";
+            }
+            if (cboBuscar.Text.Equals("Partida"))
+            {
+                condicion = "partida";
+            }
+
+            this.dataPartida.DataSource = NPartida.BuscarPartida(this.txtBuscar.Text, condicion);
+
+            lblregistros.Text = "Total de Registros : " + Convert.ToString(dataPartida.Rows.Count - 1);
+
+
+        }
 
         private void Mostrar()
         {
@@ -41,5 +61,17 @@ namespace CapaPresentacion
             form.setPartida(par1, par2);
             this.Hide();
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            buscar_changed();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar_changed();
+        }
+
+        
     }
 }

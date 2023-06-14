@@ -59,32 +59,39 @@
             // cboBuscar
             // 
             this.cboBuscar.FormattingEnabled = true;
+            this.cboBuscar.Items.AddRange(new object[] {
+            "CI",
+            "Nombre",
+            "Cargo"});
             this.cboBuscar.Location = new System.Drawing.Point(35, 48);
             this.cboBuscar.Name = "cboBuscar";
-            this.cboBuscar.Size = new System.Drawing.Size(158, 21);
+            this.cboBuscar.Size = new System.Drawing.Size(196, 21);
             this.cboBuscar.TabIndex = 2;
+            this.cboBuscar.Text = "Seleccione";
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(224, 48);
+            this.txtBuscar.Location = new System.Drawing.Point(245, 48);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(152, 20);
             this.txtBuscar.TabIndex = 3;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(403, 48);
+            this.btnBuscar.Location = new System.Drawing.Point(414, 48);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 434);
+            this.ClientSize = new System.Drawing.Size(713, 433);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.cboBuscar);

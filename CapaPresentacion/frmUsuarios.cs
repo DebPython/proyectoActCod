@@ -19,6 +19,32 @@ namespace CapaPresentacion
             Mostrar();
         }
 
+        private void buscar_changed()
+        {
+
+            string condicion = "";
+
+            if (cboBuscar.Text.Equals("Nombre"))
+            {
+                condicion = "nombre";
+            }
+            if (cboBuscar.Text.Equals("CI"))
+            {
+                condicion = "ci";
+            }
+            if (cboBuscar.Text.Equals("Apellido Paterno"))
+            {
+                condicion = "paterno";
+
+            }
+
+            this.dataUsuarios.DataSource = NUsuarios.BuscarUsuarios(this.txtBuscar.Text, condicion);
+
+            lblregistros.Text = "Total de Registros : " + Convert.ToString(dataUsuarios.Rows.Count - 1);
+
+
+        }
+
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
 
@@ -29,6 +55,16 @@ namespace CapaPresentacion
             this.dataUsuarios.DataSource = NUsuarios.Mostrar();
 
             lblregistros.Text = "Total de Registros : " + Convert.ToString(dataUsuarios.Rows.Count - 1);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            buscar_changed();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar_changed();
         }
     }
 }
